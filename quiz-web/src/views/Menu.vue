@@ -6,6 +6,7 @@
     //help <button></button>
     //git <button></button>
     //quit <button></button>
+  </div>
 </template>
 
 <script>

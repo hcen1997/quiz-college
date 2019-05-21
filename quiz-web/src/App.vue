@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div id="nav" v-if="false">
       <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>
       <br>
@@ -21,7 +21,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 html {
   background-color: #1c2532;

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="color: aliceblue">
         {{systemName}}问答系统
     </div>
 </template>
@@ -11,3 +11,6 @@ export default {
   }
 }
 </script>
+WebView webView = new WebView(this);
+webView.getSettings( ).setJavaScriptEnabled(true);
+webView.loadUrl("https://www.tust.edu.cn");

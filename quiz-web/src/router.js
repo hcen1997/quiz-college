@@ -37,13 +37,32 @@ export default new Router({
       component: () => import('./views/training/TrainingResult.vue')
     },
     // login module need login or not all is ok
-    // todo: here is some router
+    {
+      path: '/login',
+      component: () => import('./views/Login.vue')
+    },
     // user info module
-    // todo: here is some router
+    // person
+    {
+      path: '/person',
+      component: () => import('./views/Person.vue')
+    },
     // bonus module
     {
       path: '/bonus/choose',
       component: () => import('./views/Bonus.vue')
+    },
+    {
+      path: '/setting',
+      component: () => import('./views/setting/Setting.vue')
+    },
+    {
+      path: '/setting/account',
+      component: () => import('./views/setting/Account.vue')
+    },
+    {
+      path: '/testadd',
+      component: () => import('./plugins/Test.vue')
     }
   ]
 })

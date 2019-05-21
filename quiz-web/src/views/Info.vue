@@ -1,3 +1,4 @@
+//显示题目信息 wiki
 <template>
   <div class="info">
     <div class="person">
@@ -22,8 +23,8 @@
 </template>
 
 <script>
-</script>
 
+</script>
 
 <style scoped>
 .person{
