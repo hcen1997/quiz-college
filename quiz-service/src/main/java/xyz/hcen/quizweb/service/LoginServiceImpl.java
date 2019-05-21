@@ -20,7 +20,7 @@ public class LoginServiceImpl implements LoginService {
     //就算我获取了密码 又有谁能看见呢？他还能检测我的服务器端的发送接收情况？知道我的服务器和谁聊天？
     @Override
     public String querryPassword(Long id){
-        if(id.equals(Long.valueOf(1L))){
+        if(id.equals(1L)){
             return "21232f297a57a5a743894a0e4a801fc3";
         }
         return "";

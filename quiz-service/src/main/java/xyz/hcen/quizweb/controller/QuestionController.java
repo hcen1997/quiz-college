@@ -3,15 +3,16 @@ package xyz.hcen.quizweb.controller;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import xyz.hcen.quizweb.mapper.QuestionMapper;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * @author hcen1997
+ */
+@CrossOrigin
 @RestController
 public class QuestionController {
     private Log log = LogFactory.getLog(QuestionController.class);
@@ -20,23 +21,39 @@ public class QuestionController {
 
     @RequestMapping("/api/question/single")
     public Map questionSingle(int id) {
-        Map<String, Object> reqMap = new HashMap<>();
-        String[] category={"all"};
-        reqMap.put("quantity", 1);
-        reqMap.put("category", category);
-        Map resMap  =questionMapper.querySingleQue(id);
-        return resMap;
+        return questionMapper.querySingleQue(id);
     }
 //    @RequestParam(value = "quantity")@RequestParam(value = "category")
+
     @RequestMapping("/api/question/list")
-    public Map questionList(int quantity,
-                        String[] category) {
-        quantity=1;
-        category=null;
-        Map<String, Object> resultMap = new HashMap<>();
-        resultMap.put("quantity", quantity);
-        resultMap.put("category", category);
-        return resultMap;
+    public ArrayList<Map> questionList(int quantity,
+                                          String category) {
+//        quantity=1;
+//        category=null;
+        String[] cats = category.split("\\|");
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        for(int i=0;i<cats.length;i++){
+            //
+            if(i+1==cats.length){
+                numbers.add(quantity);
+                break;
+            }
+            int part = 0;
+            do{
+                part =(int) Math.round(((double)quantity)* Math.random());
+            }while (part==quantity);
+            numbers.add(part);
+            quantity-=part;
+        }
+        // cats [] numbers[]
+        ArrayList<Map> questionList = new ArrayList<>();
+        for (int i = 0; i < cats.length; i++) {
+            ArrayList<Map> a0 = questionMapper.queryListbyCategory(cats[i],numbers.get(i));
+            questionList.addAll(a0);
+        }
+        // 根据不同的类别调用不同的类别service
+
+        return questionList;
     }
 
     @RequestMapping(value = "/api/question/add",method = RequestMethod.POST)
@@ -45,7 +62,8 @@ public class QuestionController {
                               @RequestParam(value = "rightans")String rightans,
                               @RequestParam(value = "category")String category,
                               @RequestParam(value = "difficulty")int difficulty){
-        String result ="";//"success error fail
+        //"success error fail
+        String result ="";
         try {
              if(questionMapper.insertQestion(question,answer,rightans,
                     category,difficulty)==1){

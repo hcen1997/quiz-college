@@ -6,18 +6,18 @@
 </head>
 <body>
     <form id="form" action="/api/question/add" method="post">
-        question:<input id="question" name="question" type="text" placeholder="input question"><br>
-        <input  hidden="true" name="answer" id="answer" type="text" placeholder="input answer"><br>
-        选项一:<input name="ans1" id="ans1" type="text" placeholder="input answer1"><br>
-        选项二:<input name="ans2" type="text" id="ans2" placeholder="input answer2"><br>
-        选项三:<input name="ans3" type="text" id="ans3" placeholder="input answer3"><br>
-        选项四:<input name="ans4" type="text" id="ans4" placeholder="input answer4"><br>
-        正确的选项：<input id="rightans" name="rightans" type="text" placeholder="input rightans"><br>
-        <input  hidden="true" ><br>
-        问题类别：<input name="category" type="text" placeholder="常识判断"><br>
-        难度：<input name="difficulty" type="number" value="0"><br>
+        <label for="question">question:</label><input id="question" name="question" type="text" placeholder="input question"><br>
+        <label for="answer"></label><input hidden name="answer" id="answer" type="text" placeholder="input answer"><br>
+        <label for="ans1">选项一:</label><input name="ans1" id="ans1" type="text" placeholder="input answer1"><br>
+        <label for="ans2">选项二:</label><input name="ans2" type="text" id="ans2" placeholder="input answer2"><br>
+        <label for="ans3">选项三:</label><input name="ans3" type="text" id="ans3" placeholder="input answer3"><br>
+        <label for="ans4">选项四:</label><input name="ans4" type="text" id="ans4" placeholder="input answer4"><br>
+        <label for="rightans">正确的选项：</label><input id="rightans" name="rightans" type="text" placeholder="input rightans"><br>
+        <br><br>
+        <label for="category">问题类别：</label><input id="category" name="category" type="text" placeholder="常识判断"><br>
+        <label for="difficulty">难度：</label><input id="difficulty" name="difficulty" type="number" value="0"><br>
         <input type="button" id="smart" value="Smart Submit" onclick="beforeSubmit()">
-        <button  type="submit" id="btnSubmit" hidden="true">submit</button>
+        <button  type="submit" id="btnSubmit" hidden>submit</button>
     </form>
     <div id="message"></div>
 </body>
